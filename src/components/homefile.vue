@@ -1,9 +1,11 @@
 <template>
  
  <div>
-  <!-- <h1>Hello</h1> -->
+  <h1 v-if="show">show true then else text printed "Hello"</h1>
+  <h1 v-else>show false then else text printed "Hello"</h1>
   <h2>{{demo}}</h2>
   <button v-on:click="hello('submit click')">Submit</button>
+  
  </div>
 </template>
 
@@ -15,13 +17,15 @@ export default {
     demo:String
   },
   methods:{
-    // hello(){
-    //   console.log("hi submit clicked");
-    // }
-    //parameterised fun
-     hello(data){
-      console.log(data);
+    hello(){
+      // console.log("hi submit clicked");
+      return{show:false}
+
     }
+    //parameterised fun
+    //  hello(data){
+    //   alert(data);
+    // }
   }
 }
 </script>
