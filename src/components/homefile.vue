@@ -3,7 +3,7 @@
  <div>
   <!-- <h1>Hello</h1> -->
   <h2>{{demo}}</h2>
-  <button v-on:click="hello()">Submit</button>
+  <button v-on:click="hello('submit click')">Submit</button>
  </div>
 </template>
 
@@ -15,8 +15,12 @@ export default {
     demo:String
   },
   methods:{
-    hello(){
-      console.log("hi submit clicked");
+    // hello(){
+    //   console.log("hi submit clicked");
+    // }
+    //parameterised fun
+     hello(data){
+      console.log(data);
     }
   }
 }
