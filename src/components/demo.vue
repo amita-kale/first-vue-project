@@ -1,6 +1,8 @@
 <template>
 <div>
-    <h1>{{name}}</h1>
+    <h1>{{Title}}</h1>
+    <br>
+   Name: <input type="text" placeholder="Enter Name" ref="name">  <br>
     <br>
     <button>click Here</button>
 </div>
@@ -9,7 +11,7 @@
 export default {
   name:"listFile",
   data(){
-    return {name:"Welcome to my page"}
+    return {Title:"Welcome to my page",name:"Amita"}
   },
   methods:{
     buttonClicked(){
