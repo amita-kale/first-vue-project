@@ -1,21 +1,22 @@
 <template>
 <div>
     <h1>{{Title}}</h1>
+    <h1>{{count}}</h1>
     <br>
    Name: <input type="text" placeholder="Enter Name" ref="name">  <br>
     <br>
-    <button>click Here</button>
+    <button @click="buttonClicked()">click Here</button>
 </div>
 </template>
 <script>
 export default {
   name:"listFile",
   data(){
-    return {Title:"Welcome to my page",name:"Amita"}
+    return {Title:"Welcome to my page",name:"Amita",count:0}
   },
   methods:{
     buttonClicked(){
-    //   this.name="Rutika"
+      this.count++;
     }
   }
 }
