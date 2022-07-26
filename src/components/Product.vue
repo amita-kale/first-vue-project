@@ -8,6 +8,6 @@
 
 <script>
 export default {
-  name:"home-file"
+  name:"productFile"
 }
 </script>
