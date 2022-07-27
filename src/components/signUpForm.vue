@@ -5,7 +5,7 @@
  
  ID:<input type="number" v-model="signUp.id"><br><br>
  Name:<input type="text" v-model="signUp.name"><br><br>
- Hobbies: &nbsp;&nbsp;<input type="checkbox" id="hob" v-model="signUp.hobbies">
+ Hobbies: &nbsp;&nbsp;<input type="checkbox" id="hob" value="kho-kho" v-model="signUp.hobbies">
  <label for="hob">Kho-Kho</label> &nbsp;
  <input type="checkbox" id="hobi" v-model="signUp.hobbies">
  <label for="hobi">Cricket</label><br>
