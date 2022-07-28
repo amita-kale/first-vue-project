@@ -86,7 +86,7 @@
           from-indigo-500
           via-purple-500
           to-pink-500
-        " v-on:click="editCliked(user,index)">Edit</button></td>
+        " v-on:click="editCliked(index)">Edit</button></td>
            <td><button  class="
           border-solid
           rounded
@@ -110,6 +110,8 @@ export default {
   
   data() {
     return {
+      isEdit:false,
+      editIndex:-1,
       users :[],
       signUp: {
         id: null,
@@ -121,9 +123,16 @@ export default {
   },
       methods: {
       submitFormValues() {
-      
+      if(this.isEdit===true){
+        this.users[this.editIndex]=this.signUp;
+        this.isEdit=false,
+        this.editIndex=-1
+        }
+      else{
+        this.users.push(this.signUp);
+      }
       console.warn(this.signUp);
-     this.users.push(this.signUp);
+     
       console.log(this.users);
       this.signUp= {
           id: '',
@@ -132,9 +141,14 @@ export default {
           gender: '',
         };
     },
-    editCliked(u,i){
+    editCliked(i){
       console.log("Edit");
       this.signUp.id=this.users[i].id;
+      this.signUp.name=this.users[i].name;
+       this.signUp.hobbies=this.users[i].hobbies;
+        this.signUp.gender=this.users[i].gender;
+        this.isEdit=true,
+      this.editIndex=i
     },
     deleteClicked(index){
       console.log("delete");
