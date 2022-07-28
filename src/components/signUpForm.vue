@@ -72,8 +72,8 @@
           <th>Gender</th>
           <th colspan="2">Action</th>
         </tr>
-        <tr v-for="user in users" :key="user">
-          <td>{{ user.id }}</td>
+        <tr v-for="(user,index) in users" :key="user">
+          <td>{{index+1}}</td>
           <td>{{ user.name }}</td>
           <td>{{ user.hobbies }}</td>
           <td>{{ user.gender }}</td>
@@ -86,7 +86,7 @@
           from-indigo-500
           via-purple-500
           to-pink-500
-        " v-on:click="editCliked()">Edit</button></td>
+        " v-on:click="editCliked(user,index)">Edit</button></td>
            <td><button  class="
           border-solid
           rounded
@@ -96,7 +96,7 @@
           from-indigo-500
           via-purple-500
           to-pink-500
-        " @click="deleteClicked()">Delete</button></td>
+        " @click="deleteClicked(index)">Delete</button></td>
         </tr>
       </table>
     </div>
@@ -125,19 +125,20 @@ export default {
       console.warn(this.signUp);
      this.users.push(this.signUp);
       console.log(this.users);
-    this.signUp= {
-        id: '',
-        name: '',
-        hobbies: [],
-        gender: '',
-      };
+      this.signUp= {
+          id: '',
+          name: '',
+          hobbies: [],
+          gender: '',
+        };
     },
-    editCliked(){
+    editCliked(u,i){
       console.log("Edit");
-
+      this.signUp.id=this.users[i].id;
     },
-    deleteClicked(){
+    deleteClicked(index){
       console.log("delete");
+      this.users.splice(index,1);
     }
   },
       
