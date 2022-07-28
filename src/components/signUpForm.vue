@@ -1,13 +1,14 @@
 <template>
-  <div>
-    <div>
+  <div class=" grid gap-x-7  grid-cols-3 h-screen" >
+    <div class="border-solid border-2 border-amber-600 drop-shadow-md bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 ">
+      <form>
       <h1 style="color: red" class="font-bold text-3xl p-6">signUp Form</h1>
 
-      ID:<input
+      <!-- ID:<input
         type="number"
         class="bg-white border border-slate-300 rounded-md mx-4 py-2 pl-9 pr-3"
         v-model="signUp.id"
-      /><br /><br />
+      /><br /><br /> -->
 
       Name:<input
         type="text"
@@ -47,7 +48,8 @@
       <label for="male">Male</label><br />
       <br />
       <button
-        type="submit"
+        type="button"
+        id="submit-button"
         class="
           border-solid
           rounded
@@ -62,20 +64,56 @@
       >
         Submit
       </button>
+      </form>
     </div>
-    <div>
-      <table class="border border-solid">
+    <div class="bg-gray-300 col-span-2">
+      <table class=" border-black-400 border-separate bg-white  border border-slate-400 m-20" >
         <tr>
           <th>ID</th>
           <th>Name</th>
           <th>Hobbies</th>
           <th>Gender</th>
+          <th colspan="2">Action</th>
         </tr>
-        <tr v-for="user in users" :key="user">
-          <td>{{ user.id }}</td>
+        <tr v-for="(user, index) in users" :key="user">
+          <td>{{ index + 1 }}</td>
           <td>{{ user.name }}</td>
           <td>{{ user.hobbies }}</td>
           <td>{{ user.gender }}</td>
+          <td>
+            <button
+              class="
+                border-solid
+                rounded
+                border-2 border-indigo-600
+                p-1
+                bg-gradient-to-r
+                from-indigo-500
+                via-purple-500
+                to-pink-500
+              "
+              v-on:click="editCliked(index)"
+            >
+              Edit
+            </button>
+          </td>
+          <td>
+            <button
+              class="
+                border-solid
+                rounded
+                border-2 border-indigo-600
+                p-1
+                bg-gradient-to-r
+                from-indigo-500
+                via-purple-500
+                to-pink-500
+              "
+              @click="deleteClicked(index)"
+            >
+              Delete
+            </button>
+          </td>
         </tr>
       </table>
     </div>
@@ -83,38 +121,57 @@
 </template>
 
 <script>
-
 export default {
   name: "signUpForm",
-  
+
   data() {
     return {
-      users :[],
+      isEdit: false,
+      editIndex: -1,
+      users: [],
       signUp: {
         id: null,
         name: null,
         hobbies: [],
         gender: null,
       },
-       };
+    };
   },
-      methods: {
-      submitFormValues() {
-      
+  methods: {
+    submitFormValues() {
+      if (this.isEdit === true) {
+        this.users[this.editIndex] = this.signUp;
+        (this.isEdit = false), (this.editIndex = -1);
+        let b = document.getElementById("submit-button");
+        b.innerText = "Submit";
+      } else {
+        this.users.push(this.signUp);
+      }
       console.warn(this.signUp);
-     this.users.push(this.signUp);
+
       console.log(this.users);
-    this.signUp= {
-        id: '',
-        name: '',
+      this.signUp = {
+        id: "",
+        name: "",
         hobbies: [],
-        gender: '',
+        gender: "",
       };
     },
+    editCliked(i) {
+      console.log("Edit");
+      this.signUp.id = this.users[i].id;
+      this.signUp.name = this.users[i].name;
+      this.signUp.hobbies = this.users[i].hobbies;
+      this.signUp.gender = this.users[i].gender;
+      this.isEdit = true;
+      this.editIndex = i;
+      let b = document.getElementById("submit-button");
+      b.innerText = "Update";
+    },
+    deleteClicked(index) {
+      console.log("delete");
+      this.users.splice(index, 1);
+    },
   },
-      
-   
-
- 
 };
 </script>
