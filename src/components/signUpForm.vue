@@ -3,11 +3,11 @@
     <div>
       <h1 style="color: red" class="font-bold text-3xl p-6">signUp Form</h1>
 
-      ID:<input
+      <!-- ID:<input
         type="number"
         class="bg-white border border-slate-300 rounded-md mx-4 py-2 pl-9 pr-3"
         v-model="signUp.id"
-      /><br /><br />
+      /><br /><br /> -->
 
       Name:<input
         type="text"
@@ -47,7 +47,7 @@
       <label for="male">Male</label><br />
       <br />
       <button
-        type="submit"
+        type="submit" id="submit-button"
         class="
           border-solid
           rounded
@@ -127,6 +127,8 @@ export default {
         this.users[this.editIndex]=this.signUp;
         this.isEdit=false,
         this.editIndex=-1
+        let b=document.getElementById('submit-button');
+                    b.innerText='Submit';
         }
       else{
         this.users.push(this.signUp);
@@ -147,8 +149,10 @@ export default {
       this.signUp.name=this.users[i].name;
        this.signUp.hobbies=this.users[i].hobbies;
         this.signUp.gender=this.users[i].gender;
-        this.isEdit=true,
-      this.editIndex=i
+        this.isEdit=true;
+      this.editIndex=i;
+        let b=document.getElementById('submit-button');
+                    b.innerText='Update';
     },
     deleteClicked(index){
       console.log("delete");
