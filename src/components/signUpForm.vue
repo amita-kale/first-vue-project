@@ -70,12 +70,33 @@
           <th>Name</th>
           <th>Hobbies</th>
           <th>Gender</th>
+          <th colspan="2">Action</th>
         </tr>
         <tr v-for="user in users" :key="user">
           <td>{{ user.id }}</td>
           <td>{{ user.name }}</td>
           <td>{{ user.hobbies }}</td>
           <td>{{ user.gender }}</td>
+          <td><button  class="
+          border-solid
+          rounded
+          border-2 border-indigo-600
+          p-1
+          bg-gradient-to-r
+          from-indigo-500
+          via-purple-500
+          to-pink-500
+        " v-on:click="editCliked()">Edit</button></td>
+           <td><button  class="
+          border-solid
+          rounded
+          border-2 border-indigo-600
+          p-1
+          bg-gradient-to-r
+          from-indigo-500
+          via-purple-500
+          to-pink-500
+        " @click="deleteClicked()">Delete</button></td>
         </tr>
       </table>
     </div>
@@ -111,6 +132,13 @@ export default {
         gender: '',
       };
     },
+    editCliked(){
+      console.log("Edit");
+
+    },
+    deleteClicked(){
+      console.log("delete");
+    }
   },
       
    
